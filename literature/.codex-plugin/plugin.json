@@ -1,0 +1,28 @@
+{
+  "name": "literature",
+  "version": "0.1.0",
+  "description": "Literature card management: hallucination-proof paper intake, full-text retrieval (opencite → PMC → Sci-Hub → KUMC), quote-locked card creation, BibTeX verification, and project-scoped INDEX maintenance",
+  "author": {
+    "name": "Sodiq Fakorede",
+    "email": "fakoredesodiq@gmail.com"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "keywords": [
+    "literature",
+    "card",
+    "source",
+    "bib",
+    "citation",
+    "bibtex",
+    "fulltext",
+    "paper",
+    "doi",
+    "pmid",
+    "retrieval",
+    "opencite",
+    "scihub",
+    "kumc",
+    "hallucination-proof"
+  ]
+}

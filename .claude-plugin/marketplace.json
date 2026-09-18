@@ -1,0 +1,16 @@
+{
+  "name": "my-skills",
+  "owner": {
+    "name": "Sodiq Fakorede",
+    "email": "fakoredesodiq@gmail.com",
+    "url": "https://github.com/BolaFlame1"
+  },
+  "plugins": [
+    {
+      "name": "literature",
+      "source": "./literature/",
+      "description": "Literature card management: hallucination-proof paper intake, full-text retrieval (opencite → PMC → Sci-Hub → KUMC), quote-locked card creation, BibTeX verification, and project-scoped INDEX maintenance",
+      "version": "0.1.0"
+    }
+  ]
+}
