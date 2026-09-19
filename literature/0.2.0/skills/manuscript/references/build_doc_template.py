@@ -496,3 +496,14 @@ for i, key in enumerate(ordered_keys, start=1):
 validate_citations(set(_cite_order), _bib)
 doc.save(OUTFILE)
 print(f"Saved: {OUTFILE}")
+
+# Write cite_map.json for /literature:endnote-link
+import json as _json
+_cite_map_path = os.path.join(HERE, "references", "cite_map.json")
+with open(_cite_map_path, "w", encoding="utf-8") as _f:
+    _json.dump(
+        {slug: {"number": _cites[slug], "doi": _bib.get(slug, {}).get("doi", "")}
+         for slug in _cite_order},
+        _f, indent=2
+    )
+print(f"Cite map : {_cite_map_path}")
