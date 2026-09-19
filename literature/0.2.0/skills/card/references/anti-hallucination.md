@@ -116,6 +116,35 @@ If any section was skipped: read it before proceeding.
 
 ---
 
+---
+
+## Rule 7 — Claims layer: paraphrase, not copy
+
+**When a card pointer is used to support a manuscript sentence, the sentence must pass the 5-word overlap check before the claim entry is written.**
+
+```bash
+python3 - <<'EOF'
+ms_words  = "{manuscript_sentence}".lower().split()
+src_words = "{verbatim_quote}".lower().split()
+windows   = [tuple(src_words[i:i+5]) for i in range(max(0, len(src_words)-4))]
+hits      = [w for w in windows
+             for j in range(max(0, len(ms_words)-4))
+             if tuple(ms_words[j:j+5]) == w]
+print("FLAG" if hits else "PASS")
+EOF
+```
+
+- `PASS` → claim entry is valid
+- `FLAG` → rewrite the manuscript sentence before creating the entry
+
+**Why:** Quote-locked pointers are verbatim by design. Without a paraphrase check at the manuscript stage, those exact phrases migrate from source.md into the manuscript prose — correct attribution, but still text duplication. The 5-consecutive-word threshold matches most journal plagiarism detection thresholds (iThenticate, Turnitin).
+
+**Applies only to:** Phase 6 CLAIM entries. Card pointers in `card.md` are verbatim by design (Rules 1 and 5) — Rule 7 does not apply there.
+
+See `references/claims-guide.md` for the full claims layer protocol.
+
+---
+
 ## Summary checklist before finalizing card.md
 
 Run this mental check for every pointer before saving:
@@ -126,5 +155,6 @@ Run this mental check for every pointer before saving:
 4. For missing info, did I write `NR` (not a guess)? ✓
 5. Did I grep verify this pointer already? ✓
 6. Have I read the full paper before writing this? ✓
+7. If writing a manuscript claim, did the paraphrase check return PASS? ✓
 
-All six must be true. If any is false, fix it first.
+All seven must be true. If any is false, fix it first.

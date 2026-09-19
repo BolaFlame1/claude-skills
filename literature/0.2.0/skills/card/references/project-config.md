@@ -23,10 +23,24 @@ extra_frontmatter_fields:
   field_name_1: ""
   field_name_2: ""    # optional inline comment for allowed values
   field_name_3: ""
+extraction_labels:
+  - "{Label 1}"       # replaces or extends the default pointer labels in Phase 4
+  - "{Label 2}"
 ```
 
 - `project` — short identifier (no spaces). Used for display only, not stored in card.md.
 - `extra_frontmatter_fields` — dict of field names to default values. Empty string `""` means "to be filled during extraction". Inline comments show allowed values.
+- `extraction_labels` — optional list of pointer label names used in Phase 4 Step 4.1. When present, **replaces** the default six labels (Study design, Sample size, Population, Primary outcome, Main finding, Follow-up). List only the labels your project needs — the skill will require all of them to be either filled or marked `NR`.
+
+---
+
+## extraction_labels — when to use
+
+Use `extraction_labels` when your systematic review or project requires standardized data extraction that differs from the generic defaults. For example:
+- A neuroimaging SR needs `Neuroimaging modality`, `WMH measure`, `MCR definition` — not `Study design` / `Follow-up`
+- A drug trial SR needs `Intervention`, `Comparator`, `Primary endpoint`, `GRADE certainty`
+
+If `extraction_labels` is absent, the default six labels apply.
 
 ---
 
